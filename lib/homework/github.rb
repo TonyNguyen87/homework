@@ -6,7 +6,7 @@ module Homework
     base_uri "https://api.github.com"
 
     def initialize
-      @auth_token = "7097428a0d4bf47b77e49e99575e61107b678fcf"
+      @auth_token = ""
       @headers = {
         "Authorization" => "token #{@auth_token}",
         "User-Agent"    => "HTTParty"
