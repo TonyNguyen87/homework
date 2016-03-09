@@ -6,7 +6,7 @@ module Homework
     base_uri "https://api.github.com"
 
     def initialize
-      @auth_token = ""
+      @auth_token = "ba8159079f31cf4a521714d71a57be6e43b6c55a"
       @headers = {
         "Authorization" => "token #{@auth_token}",
         "User-Agent"    => "HTTParty"
@@ -36,11 +36,11 @@ module Homework
     end
  
     def close_issue(owner, repo, issue_num)
-      Github.patch("/repos/#{owner}/#{repo}/issues/#{issue_num}", headers: @headers, :state => { option: "closed" }.to_json)
+      Github.patch("/repos/#{owner}/#{repo}/issues/#{issue_num}", headers: @headers, body: {"state" => "closed" }.to_json)
     end
 
     def comment_issue(owner, repo, issue_num, comment)
-      Github.patch("/repos/#{owner}/#{repo}/issues/#{issue_num}/comments", headers: @headers, :body => { option: "#{comment}" }.to_json)
+      Github.post("/repos/#{owner}/#{repo}/issues/#{issue_num}/comments", headers: @headers, body: { "body" => "#{comment}" }.to_json)
     end
   end
 end
